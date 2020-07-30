@@ -1,7 +1,7 @@
 import React from 'react'
 import USCurrencyFormat from '../USCurrencyFormat'
 
-function Summary({selected,}) {
+function Summary({selected}) {
 const summary = Object.keys(selected).map((feature, idx) => {
     const featureHash = feature + '-' + idx;
     const selectedOption = selected[feature];

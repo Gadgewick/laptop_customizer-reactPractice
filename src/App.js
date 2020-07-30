@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import {FEATURES} from './Features/Features';
 import FeaturesForm from './FeaturesForm/FeaturesForm';
-import Summary from './Summary/Summary';
-import Total from './Total/Total';
+import MainSummary from './MainSummary/MainSummary';
 
 class App extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+  
+  this.state = {
     selected: {
       Processor: {
         name: '17th Generation Intel Core HB (7 Core with donut spare)',
@@ -23,7 +26,7 @@ class App extends Component {
         name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
         cost: 1500
       }
-    }
+    }}
   };
 
   updateFeature = (feature, newValue) => {
@@ -44,21 +47,15 @@ class App extends Component {
         <main>
           
             <FeaturesForm 
-              features={this.props.features}
+              features={FEATURES}
               selected={this.state.selected}
               onUpdateFeature={this.updateFeature}
             />
 
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            <Summary 
-              selected={this.state.selected}
-            />
-            <Total 
-              selected={this.state.selected}
-            />
-            
-          </section>
+            <MainSummary 
+            features={FEATURES}
+            selected={this.state.selected}
+             />
         </main>
       </div>
     );
